@@ -20,7 +20,7 @@ require("./sechdule.js");
 
 
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://ornate-stardust-ea347c.netlify.app",
   credentials: true,
 };
 
