@@ -5,7 +5,7 @@ const sendWhatsAppTemplate = require("./config/sendToWsp");
 const sendEmail = require("./config/sendEmail");
 
 const task = async ()=>{
-  console.log("Welcome");
+  console.log("welcome");
   const remainders = await Remainder.find({});
   const now = new Date();
   const hours = now.getHours().toString().padStart(2, '0');
@@ -20,6 +20,8 @@ const task = async ()=>{
     await remainder.populate("user");
     let email = remainder.user.email;
     let phoneNum = remainder.user.phoneNum;
+
+    try{
      
     if(remainder.sendType === "Both" || remainder.sendType === "Email"){
       await sendEmail(email,"Alert!",remainder.message);
@@ -28,6 +30,10 @@ const task = async ()=>{
     if(remainder.sendType === "Both" || remainder.sendType === "Whatsapp"){
      await sendWhatsAppTemplate(phoneNum,currentTime,remainder.message);
     }
+  }
+  catch(err){
+    console.log("Error is ,",err);
+  }
   }
 }
 
