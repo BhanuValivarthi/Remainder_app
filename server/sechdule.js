@@ -5,7 +5,7 @@ const sendWhatsAppTemplate = require("./config/sendToWsp");
 const sendEmail = require("./config/sendEmail");
 
 const task = async ()=>{
-  
+  console.log("Welcome");
   const remainders = await Remainder.find({});
   const now = new Date();
   const hours = now.getHours().toString().padStart(2, '0');
