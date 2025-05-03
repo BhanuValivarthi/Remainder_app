@@ -13,10 +13,10 @@ const task = async ()=>{
   const currentTime = `${hours}:${minutes}`;
   
   const neededRemainders = remainders.filter((remainder)=>{
+    console.log("currentTime:", currentTime, "| reminderTime:", remainder.time);
     return currentTime === remainder.time.trim();
-    console.log("currentTime:", currentTime, "| reminderTime:", remainder.time.trim());
+    
   })
-
   
   for(const remainder of neededRemainders){
     await remainder.populate("user");
