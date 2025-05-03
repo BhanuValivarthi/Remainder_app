@@ -8,8 +8,9 @@ const task = async ()=>{
   console.log("welcome");
   const remainders = await Remainder.find({});
   const now = new Date();
-  const hours = now.getHours().toString().padStart(2, '0');
-  const minutes = now.getMinutes().toString().padStart(2, '0');
+  const istNow = new Date(now.toLocaleString("en-US", { timeZone: "Asia/Kolkata" }));
+  const hours = istNow.getHours().toString().padStart(2, '0');
+  const minutes = istNow.getMinutes().toString().padStart(2, '0');
   const currentTime = `${hours}:${minutes}`;
   
   const neededRemainders = remainders.filter((remainder)=>{
