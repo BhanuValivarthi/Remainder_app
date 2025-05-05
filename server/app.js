@@ -32,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({extended:true}));
 
 
+
 main()
 .then(() => console.log("connected to DB"))
 .catch(err => console.log(err));
@@ -40,6 +41,10 @@ async function main() {
   await mongoose.connect(dbUrl);
 }
 
+app.get("/welcome",(req,res)=>{
+  console.log("ping every 5 minutes");
+  res.send("Welcome");
+})
 
 app.use("/user",user);
 app.use("/:userId",remainder);
@@ -54,6 +59,7 @@ app.use((err,req,res,next)=>{
    console.log(err);
    res.status(statusCode).json({success: false, message});
 })
+
 
 
 app.listen(port,()=>{
