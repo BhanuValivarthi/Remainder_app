@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Login = ()=>{ 
      let [form,setForm] = useState({email:"",password:""});
-     const [error,setError] = useState(" ");
+     const [error,setError] = useState("");
      const navigate = useNavigate();
      
     const handleLogin = async (e)=>{
