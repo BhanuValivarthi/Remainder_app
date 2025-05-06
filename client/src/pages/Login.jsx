@@ -12,25 +12,24 @@ const Login = ()=>{
     const handleLogin = async (e)=>{
        e.preventDefault();
       
-        try{
-           let email = form.email;
-           let password = form.password;
-           if(!email.trim() || !password.trim()){
-               setError('Plese enter Email and Password');
-              } else {
-                 setError('');
-                 const res = await loginuser(form);
-                 localStorage.setItem("userId",res.data.user._id);
-                 navigate("/dashboard");
+       const {email,password} = form;
+      
+        if(!email.trim() || !password.trim()){
+            setError('Plese enter Email and Password');
+            return;
+        } 
+          try{
+            setError('');
+            const res = await loginuser(form);
+            localStorage.setItem("userId",res.data.user._id);
+            setForm({email:"",password:""});
+             navigate("/dashboard");
            }
-        }
+        
         catch(err){
-          console.log(err.message);
+           setError(err.response?.data?.message || "Login failed. Please try again.");
         }
-        setForm({
-          email:"",
-          password:""
-        });
+       
     }
   return(
     <>
