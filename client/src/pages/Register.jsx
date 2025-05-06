@@ -10,22 +10,19 @@ const Register = ()=>{
     const navigate = useNavigate();
    const handleSignup = async (e)=>{
       e.preventDefault();
-      try{
-         let userName = form.userName;
-         let email = form.email;
-         let password = form.password;
-         let phoneNum = form.phoneNum;
+     
+         const {userName,email,password,phoneNum} = form;
          if(!userName.trim() || !email.trim() || !password.trim() || !phoneNum.trim()){
            setError("Please enter Your details it is compulsory");
+           return;
          }
-         else{
+         try{
             setError('');
             const res = await registeruser(form);
             console.log("User created sucessfully",res);
             localStorage.setItem("userId",res.data.user._id);
             navigate("/dashboard");
-         }
-      }
+        }
       catch(e){
         console.log("Error in sign up is",e.message);
       }
