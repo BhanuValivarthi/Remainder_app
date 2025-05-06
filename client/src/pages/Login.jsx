@@ -1,21 +1,28 @@
 import { loginuser } from "../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import  LoginPage, { Username,Password ,Submit} from '@react-login-page/page1';
+
 
 
 const Login = ()=>{ 
      let [form,setForm] = useState({email:"",password:""});
+     const [error,setError] = useState(" ");
      const navigate = useNavigate();
      
     const handleLogin = async (e)=>{
        e.preventDefault();
       
         try{
-           const res = await loginuser(form);
-           console.log("Login successfully");
-           localStorage.setItem("userId",res.data.user._id);
-           navigate("/dashboard");
+           let email = form.email;
+           let password = form.password;
+           if(!email.trim() || !password.trim()){
+               setError('Plese enter Email and Password');
+              } else {
+                 setError('');
+                 const res = await loginuser(form);
+                 localStorage.setItem("userId",res.data.user._id);
+                 navigate("/dashboard");
+           }
         }
         catch(err){
           console.log(err.message);
@@ -44,6 +51,7 @@ const Login = ()=>{
               value={form.password} onChange={(e) =>setForm({...form,password:e.target.value})}
             />
            </div>
+           {error && <p style={{color:"red"}}>{error}</p>}
            <button type="submit">Login</button>
      </form>
         </div>

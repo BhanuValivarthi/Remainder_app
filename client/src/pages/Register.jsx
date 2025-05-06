@@ -6,14 +6,25 @@ import "./register.css"
 
 const Register = ()=>{
    let [form,setForm] = useState({userName:"",email:"",password:"",phoneNum:""});
+   const [error,setError] = useState(" ");
     const navigate = useNavigate();
    const handleSignup = async (e)=>{
       e.preventDefault();
       try{
-         const res = await registeruser(form);
-         console.log("User created sucessfully",res);
-         localStorage.setItem("userId",res.data.user._id);
-         navigate("/dashboard");
+         let userName = form.userName;
+         let email = form.email;
+         let password = form.password;
+         let phoneNum = form.phoneNum;
+         if(!userName.trim() || !email.trim() || !password.trim() || !phoneNum.trim()){
+           setError("Please enter Your details it is compulsory");
+         }
+         else{
+            setError('');
+            const res = await registeruser(form);
+            console.log("User created sucessfully",res);
+            localStorage.setItem("userId",res.data.user._id);
+            navigate("/dashboard");
+         }
       }
       catch(e){
         console.log("Error in sign up is",e.message);
@@ -46,6 +57,7 @@ const Register = ()=>{
               value={form.password} onChange={(e) =>setForm({...form,password:e.target.value})}
             />
           </div>
+          {error && <p style={{color:"red"}}>{error}</p>}
           <button type="submit">Submit</button>
         </form>
       </div>

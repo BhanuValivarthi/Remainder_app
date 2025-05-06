@@ -20,7 +20,7 @@ require("./sechdule.js");
 
 
 const corsOptions = {
-  origin: "https://ornate-stardust-ea347c.netlify.app",
+  origin:"https://ornate-stardust-ea347c.netlify.app",
   credentials: true,
 };
 
@@ -42,7 +42,6 @@ async function main() {
 }
 
 app.get("/welcome",(req,res)=>{
-  console.log("ping every 5 minutes");
   res.send("Welcome");
 })
 
