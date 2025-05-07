@@ -6,6 +6,14 @@ exports.createUser = async(req,res)=>{
 
   const {userName,email,phoneNum,password,remainder} = req.body;
 
+  console.log(email);
+  let user1 = await User.findOne({email});
+  let user2 = await User.findOne({phoneNum});
+
+  if(user1 || user2){
+    return res.status(400).json({message:"Please enter New PhoneNumber and Email"});
+  }
+
   let salt = await bcrypt.genSalt(10);
   let hashPassword = await bcrypt.hash(password,salt);
   
