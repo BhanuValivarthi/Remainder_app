@@ -45,20 +45,19 @@ const DashBoard =  ()=>{
            style={{
              backgroundImage: `url(${dashboardImg})`, 
              backgroundSize: "cover",
-              backgroundPosition: "center",
               minHeight: "99.5vh",
               minWidth:"99.5vw",
               overflow:"hidden"
            }}
          > 
-    <Stack sx={{ width: '100%' }} spacing={2} style={{ marginTop: "100px" }}>
+    <Stack sx={{ width: '100%' }} spacing={2} style={{ marginTop: "100px" }} className="dashboard">
       {remainders.map((rem) => (
           < SnackbarContent  message={`${rem.message}  @${rem.time}`}
               action={<ClearIcon  onClick={()=>handleDelete(userId,rem._id,fetchRemainders)} 
               style={{cursor:"pointer"}} />} />
     ))}
     </Stack>
-
+       <p className="dashboard">welcome to india</p>
       <div style={{margin:"50px 0px 20px 0px", display:"flex",justifyContent:"center"}}>
         <Button variant="contained" color="success" onClick={handleCreate} >CREATE</Button>
       </div> 
