@@ -1,7 +1,7 @@
 import { loginuser } from "../services/api";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import dashboarImg from "../assets/login.jpg"
 
 
 const Login = ()=>{ 
@@ -33,16 +33,26 @@ const Login = ()=>{
     }
   return(
     <>
-    <div className="wrapper signUp">
+       <div
+             style={{
+               backgroundImage: `url(${dashboarImg})`, 
+               backgroundSize: "cover",
+               backgroundPosition: "center",
+               minHeight: "99.5vh",
+               minWidth:"99.5vw" 
+             }}
+             className="dashboard"
+           > 
+    <div className="wrapper signUp" >
     <div className="form">
-       <div className="heading">PLEASE LOGIN</div>
+      
      <form onSubmit={handleLogin} >
            <div>
-            <label htmlFor="email">E-Mail</label>
+            <label htmlFor="email" style={{color:"blue"}}>E-Mail</label>
             <input type="text" id="email" placeholder="Enter your mail" value={form.email} onChange={(e) =>setForm({...form,email:e.target.value})} />
           </div>
           <div>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password" style={{color:"blue"}}>Password</label>
             <input
               type="password"
               id="password"
@@ -51,10 +61,11 @@ const Login = ()=>{
             />
            </div>
            {error && <p style={{color:"red"}}>{error}</p>}
-           <button type="submit">Login</button>
+           <button type="submit" style={{marginTop:"40px"}}>Login</button>
      </form>
         </div>
-      </div>
+      </div> 
+      </div> 
     </>
   )
 }

@@ -45,6 +45,7 @@
 .form label {
   display: block;
   margin: 1.25rem 0 1rem 0;
+  color: blue;
 }
 
 .form input {
@@ -52,14 +53,15 @@
   width: 100%;
   padding: 15px;
   background-color: #f1f9ff;
-  border: 2px solid #bce0fd;
+  border: 2px solid #dd3675 !important;
   border-radius: 8px;
 }
 
 .form button {
   height: 40px;
   width: 100%;
-  background-color: #258de6;
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+    background-image: linear-gradient(to right, rgb(238, 119, 36), rgb(216, 54, 58), rgb(221, 54, 117), rgb(180, 69, 147));
   color: white;
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -96,6 +98,8 @@
   .form {
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
+    
+    
   }
   .form input {
     width: 250px;
@@ -131,3 +135,4 @@ button:active {
   height: 30px;
   
 }
+

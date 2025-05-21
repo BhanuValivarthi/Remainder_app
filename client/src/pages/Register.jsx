@@ -1,6 +1,7 @@
 import {  useState } from "react";
 import { registeruser } from "../services/api";
 import { useNavigate,Link } from "react-router-dom";
+import dashboarImg from "../assets/login.jpg"
 import "./register.css"
 
 
@@ -29,12 +30,22 @@ const Register = ()=>{
    } 
   return(
     <>
+      <div
+             style={{
+                     backgroundImage: `url(${dashboarImg})`, 
+                     backgroundSize: "cover",
+                     backgroundPosition: "center",
+                     minHeight: "99.5vh",
+                     minWidth:"99.5vw" 
+                   }}
+                   className="dashboard"
+                 > 
       <div className="wrapper signUp">
       <div className="form">
-        <div className="heading">CREATE AN ACCOUNT</div>
+        <div className="heading" style={{color:"#dd3675"}}>CREATE AN ACCOUNT</div>
         <form onSubmit={handleSignup}>
           <div>
-            <label htmlFor="name">UserName</label>
+            <label htmlFor="name" >UserName</label>
             <input type="text" id="name" placeholder="Enter your name" value={form.userName} onChange={(e)    =>setForm({...form,userName:e.target.value})}/>
           </div>
           <div>
@@ -58,6 +69,7 @@ const Register = ()=>{
           <button type="submit">Submit</button>
         </form>
       </div>
+    </div>
     </div>
     </>
   )

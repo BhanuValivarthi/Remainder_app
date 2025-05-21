@@ -1,5 +1,5 @@
   
-import dashboarImg from "../assets/Home.jpg"
+import dashboarImg from "../assets/Home3.png"
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import { useNavigate } from "react-router-dom";
@@ -14,8 +14,8 @@ const Home = ()=>{
         backgroundImage: `url(${dashboarImg})`, 
         backgroundSize: "cover",
         backgroundPosition: "center",
-        minHeight: "100vh",
-        minWidth:"100vw" 
+        minHeight: "99.5vh",
+        minWidth:"99.5vw" 
       }}
       className="dashboard"
     >  

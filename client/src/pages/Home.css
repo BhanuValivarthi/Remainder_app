@@ -2,13 +2,19 @@
    
 .dashboard{
   display: flex !important;
-  justify-content: end !important;
-  
+  justify-content: center !important;
+  align-items: center !important; 
 }
 #button{
-  height: 35px !important;
-  margin-top: 20px !important;
-  margin-right: 30px;
+   height: 35px !important;
+  margin-top: 150px !important;
+  /* margin-right: 50px; */
   border-radius: 10px;
-  background-color: black;
+  /* background-color:skyblue; */
+  margin: 30px;
+   background: linear-gradient(to right, #d8363a, #dd3675,);
+    background-image: linear-gradient(to right, rgb(216, 54, 58), rgb(221, 54, 117));
+}
+#button:hover{
+  background-color: green;
 }

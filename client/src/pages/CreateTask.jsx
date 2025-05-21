@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createRemainder } from "../services/api";
+import dashboardImg  from "../assets/task.png"
 
 const CreateTask = ()=>{
      let navigate = useNavigate();
@@ -16,9 +17,19 @@ const CreateTask = ()=>{
      }
   return(
     <>
+        <div
+             style={{
+               backgroundImage: `url(${dashboardImg})`, 
+               backgroundSize: "cover",
+               backgroundPosition: "center",
+               minHeight: "99.5vh",
+               minWidth:"99.5vw" 
+             }}
+             className="dashboard"
+           > 
        <div className="wrapper signUp">
           <div className="form">
-              <div className="heading">CREATE A ALERT MESSAGE</div>
+              <div className="heading" style={{color:"#dd3675"}}>CREATE A ALERT MESSAGE</div>
                  <form onSubmit={handleSubmit}>
                    <div>
                       <label htmlFor="message">Message</label>
@@ -53,6 +64,7 @@ const CreateTask = ()=>{
                     <button type="submit" style={{width:"150px"}}>Submit</button>
                   </form>
              </div>
+          </div>
           </div>
         </>
   )
